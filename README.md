@@ -21,5 +21,8 @@ uwsgi --ini start.ini
 ### 容器启动
 ```
 cd docker
-docker build -t  operation-site:lastest .
+# 构建容器
+./build.sh
+# 启动容器
+./run.sh
 ```
