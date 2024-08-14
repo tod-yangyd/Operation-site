@@ -1,4 +1,4 @@
-FROM python:3.7.17-slim
+FROM python:3.9.19-slim
 
 # solve please select the geographic area in which you live problems
 ARG DEBIAN_FRONTEND=noninteractive
