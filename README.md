@@ -11,7 +11,15 @@
 修改config.py里钉钉的配置
 
 ## 启动
+服务器启动建议用守护进程比如supervisord
+
 ```
 uwsgi --ini start.ini 
 
+```
+
+### 容器启动
+```
+cd docker
+docker build -t  operation-site:lastest .
 ```
