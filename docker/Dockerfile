@@ -8,7 +8,7 @@ ADD sources.list /etc/apt/sources.list
 ADD pip.conf /root/.pip/pip.conf
 ADD docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
-RUN apt update && apt install -y git python3.8 python3-pip && \
+RUN apt update && apt install -y git && \
     apt install -y gcc && apt install -y python37-devel &&  \
     cd /opt && git clone https://gitee.com/tod-yangyd/Operation-site.git && cd Operation-site && \
     pip install -r uwsgi && \
