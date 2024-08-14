@@ -5,7 +5,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 
 ADD sources.list /etc/apt/sources.list
-ADD debian.sources /etc/apt/sources.list.d/debian.sources
 ADD pip.conf /root/.pip/pip.conf
 ADD docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
