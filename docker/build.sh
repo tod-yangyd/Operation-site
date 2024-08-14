@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t operation-stite:v0.1 .
+docker build -t operation-site:v0.1 .
