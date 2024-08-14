@@ -9,9 +9,9 @@ ADD pip.conf /root/.pip/pip.conf
 ADD docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
 RUN apt update && apt install -y git && \
-    apt install -y gcc && apt install -y python37-devel &&  \
+    apt install -y gcc && apt install -y python3-dev &&  \
     cd /opt && git clone https://gitee.com/tod-yangyd/Operation-site.git && cd Operation-site && \
-    pip install -r uwsgi && \
+    pip install uwsgi && \
     pip install -r requirements.txt && \
     mv /tmp/docker-entrypoint.sh /opt/Operation-site/docker-entrypoint.sh && chmod +x /opt/Operation-site/docker-entrypoint.sh &&  \
     apt remove -y git && apt clean
