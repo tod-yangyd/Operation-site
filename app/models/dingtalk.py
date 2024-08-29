@@ -10,6 +10,7 @@ import json
 URL = dingtalkConfig.URL
 secret = dingtalkConfig.SECRET
 
+
 def get_timestamp_sign(timestamp):
     secret_enc = secret.encode('utf-8')
     string_to_sign = '{}\n{}'.format(timestamp, secret)
@@ -40,7 +41,8 @@ def get_webhook(mode):
         print("error! mode:   ", mode, "  webhook :  ", webhook)
     return webhook
 
-def check_sign(post_sign,post_timestamp ):
+
+def check_sign(post_sign, post_timestamp):
     timestamp = str(round(time.time() * 1000))
     sign = get_timestamp_sign(timestamp)
     # 验证是否来自钉钉的合法请求
@@ -49,8 +51,9 @@ def check_sign(post_sign,post_timestamp ):
         return True
     else:
         return False
+    
 
-def build_reply(post_userid,reply):
+def build_reply(post_userid, reply):
     # 构建请求头部
     header = {
         "Content-Type": "application/json",
@@ -74,10 +77,11 @@ def build_reply(post_userid,reply):
     }
     # 对请求的数据进行json封装
     message_json = json.dumps(data)
-    return (message_json,header)
+    return (message_json, header)
+
 
 def check_post_message(post_message):
     if True:
-        reply ='收到有效信息'
+        reply = '收到有效信息'
     return reply
 

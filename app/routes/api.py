@@ -1,5 +1,5 @@
 # 导入Flask类
-from flask import  jsonify, request
+from flask import jsonify, request
 import time
 import json
 import requests
