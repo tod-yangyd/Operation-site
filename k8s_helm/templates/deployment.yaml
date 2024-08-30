@@ -40,18 +40,20 @@ spec:
           livenessProbe:
             httpGet:
               path: /api/healthcheck
-              port: http  
+              port: http
+            periodSeconds: 120
           readinessProbe:
             httpGet:
               path: /api/healthcheck
               port: http
+            periodSeconds: 60
           startupProbe:
             httpGet:
               path: /api/healthcheck
               port: http
-            initialDelaySeconds: 15
+            initialDelaySeconds: 5
             failureThreshold: 3
-            periodSeconds: 15
+            periodSeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
