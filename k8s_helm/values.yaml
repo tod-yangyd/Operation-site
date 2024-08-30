@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: 172.17.200.84:80/yyd/Operation-site
+  repository: 172.17.200.84:80/yyd/operation-site
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -94,4 +94,4 @@ affinity:
 
 
 # 环境标签
-environment: 200.90
+environment: local
