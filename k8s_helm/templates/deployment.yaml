@@ -39,15 +39,15 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /home
+              path: /api/healthcheck
               port: http  
           readinessProbe:
             httpGet:
-              path: /home
+              path: /api/healthcheck
               port: http
           startupProbe:
             httpGet:
-              path: /home
+              path: /api/healthcheck
               port: http
             initialDelaySeconds: 15
             failureThreshold: 3

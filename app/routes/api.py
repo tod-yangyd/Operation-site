@@ -6,7 +6,9 @@ import requests
 from ..models import dingtalk
 from ..base import base
 
-
+@base.route('/api/healthcheck', methods=['GET'])
+def healthcheck():
+    return jsonify({'results': 'success'})
 
 
 @base.route('/api/alert', methods=['POST'])
