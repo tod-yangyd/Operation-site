@@ -12,7 +12,7 @@ from ..base import base
 @base.route('/api/alert', methods=['POST'])
 def alert():
     headers = {'Content-Type': 'application/json'}
-    webhook = dingtalk.get_webhook(1)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
+    webhook = dingtalk.get_webhook(1,'pro')  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
     for i in data:
         msg = {
@@ -39,6 +39,9 @@ def alert():
         requests.post(webhook, data=json.dumps(send_msg_tpl), headers=headers)
         time.sleep(0.2)
     return jsonify({'results': 'success'})
+
+
+
 
 @base.route('/api/comm', methods=['POST'])
 def comm():

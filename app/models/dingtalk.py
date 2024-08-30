@@ -4,14 +4,15 @@ import hashlib
 import base64
 import urllib.parse
 import time
-from config import dingtalkConfig
+from config import dingtalkConfig,dingtalkConfig_test
 import json
 
-URL = dingtalkConfig.URL
-secret = dingtalkConfig.SECRET
+pro_URL = dingtalkConfig.URL
+pro_secret = dingtalkConfig.SECRET
+test_URL = dingtalkConfig_test.test_URL
+test_secret = dingtalkConfig_test.test_SECRET
 
-
-def get_timestamp_sign(timestamp):
+def get_timestamp_sign(timestamp,secret):
     secret_enc = secret.encode('utf-8')
     string_to_sign = '{}\n{}'.format(timestamp, secret)
     string_to_sign_enc = string_to_sign.encode('utf-8')
@@ -23,22 +24,31 @@ def get_timestamp_sign(timestamp):
     return sign
 
 
-def get_signed_url():
+def get_signed_url(URL,secret):
     timestamp = str(round(time.time() * 1000))
-    sign = get_timestamp_sign(timestamp)
+    sign = get_timestamp_sign(timestamp,secret)
     webhook = URL + "&timestamp=" + timestamp + "&sign=" + sign
     return webhook
 
 
-def get_webhook(mode):
-    if mode == 0:  # only 敏感字
-        webhook = URL
-    elif mode == 1 or mode == 2:  # 敏感字和加签 或 # 敏感字+加签+ip
-        # 加签： https://oapi.dingtalk.com/robot/send?access_token=XXXXXX&timestamp=XXX&sign=XXX
-        webhook = get_signed_url()
+def get_webhook(mode, env='test'):
+    if env == 'pro':
+        if mode == 0:  # only 敏感字
+            webhook = pro_URL
+        elif mode == 1 or mode == 2:  # 敏感字和加签 或 # 敏感字+加签+ip
+            # 加签： https://oapi.dingtalk.com/robot/send?access_token=XXXXXX&timestamp=XXX&sign=XXX
+            webhook = get_signed_url(pro_URL,pro_secret)
+        else:
+            webhook = ""
+            print("error! mode:   ", mode, "  webhook :  ", webhook)
     else:
-        webhook = ""
-        print("error! mode:   ", mode, "  webhook :  ", webhook)
+        if mode == 0:  # only 敏感字
+            webhook = test_URL
+        elif mode == 1 or mode == 2:
+            webhook = get_signed_url(test_URL,test_secret)
+        else:
+            webhook = ""
+            print("error! mode:   ", mode, "  webhook :  ", webhook)
     return webhook
 
 

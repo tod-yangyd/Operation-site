@@ -1,3 +1,3 @@
-from . import api
+from . import api,test_api
 
 
