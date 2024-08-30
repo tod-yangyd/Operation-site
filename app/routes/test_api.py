@@ -7,7 +7,7 @@ from ..models import dingtalk
 from ..base import base
 
 @base.route('/test_api/alert', methods=['POST'])
-def alert():
+def test_alert():
     headers = {'Content-Type': 'application/json'}
     webhook = dingtalk.get_webhook(1,'test')  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
