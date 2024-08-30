@@ -6,7 +6,7 @@ import requests
 from ..models import dingtalk
 from ..base import base
 
-@base.route('/api/healthcheck', methods=['GET'])
+@base.route('/api/healthcheck')
 def healthcheck():
     return jsonify({'results': 'success'})
 
@@ -68,3 +68,4 @@ def comm():
     # 发送请求
     info = requests.post(url=post_webhook, data=message_json, headers=header)
     print("请求返回： "+info.text)
+    return jsonify({'results': 'success'})

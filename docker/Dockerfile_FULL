@@ -1,9 +1,17 @@
-FROM 172.17.200.84:80/yyd/py-uwsgi:3.9.19-slim
+FROM 172.17.200.84:80/yyd/python:3.9.19-slim
 
-# 如需完整镜像文件，选择Dockerfile_FULL
+# solve please select the geographic area in which you live problems
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Shanghai
 
+ADD sources.list /etc/apt/sources.list
+ADD pip.conf /root/.pip/pip.conf
 ADD docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
+RUN apt update && apt install -y git && \
+    apt install -y gcc && apt install -y python3-dev &&  \
+    pip install uwsgi && \
+    apt clean
 
 RUN cd /opt && git clone https://gitee.com/tod-yangyd/Operation-site.git && cd Operation-site && \
     pip install -r requirements.txt && \
