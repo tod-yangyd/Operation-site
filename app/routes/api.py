@@ -14,7 +14,7 @@ def healthcheck():
 @base.route('/api/alert', methods=['POST'])
 def alert():
     headers = {'Content-Type': 'application/json'}
-    webhook = dingtalk.get_webhook(1,'pro')  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
+    webhook = dingtalk.get_webhook(1,'Production')  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
     for i in data:
         msg = {
