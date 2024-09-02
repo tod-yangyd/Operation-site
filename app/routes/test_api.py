@@ -38,7 +38,7 @@ def test_alert():
     return jsonify({'results': 'success'})
 
 
-@base.route('/test_api/alert/<env:string>', methods=['POST'])
+@base.route('/test_api/alert/<string:env>', methods=['POST'])
 def test_alert_env(env):
     headers = {'Content-Type': 'application/json'}
     webhook = dingtalk.get_webhook(1,env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
