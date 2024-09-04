@@ -3,6 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
+revisionHistoryLimit: 5
 
 image:
   repository: 172.17.200.84:80/yyd/operation-site
