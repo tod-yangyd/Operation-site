@@ -1,8 +1,9 @@
 # 运维接口平台
 
 ## 接口
-### /api/alert
-可以推送告警给钉钉指定的webhook
+### /api/alert/<env>
+可以推送告警给钉钉指定的webhook,Production推送到dingtalkConfig，否则推送到dingtalkConfig_test
+
 
 ### /api/comm（待完善）
 可以接受来自指定钉钉机器人的请求
