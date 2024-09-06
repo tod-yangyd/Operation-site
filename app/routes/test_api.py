@@ -6,11 +6,15 @@ import requests
 from ..models import dingtalk
 from ..base import base
 
+debug = True
+
 @base.route('/test_api/log_alert/<string:env>', methods=['POST'])
 def log_alert(env):
     headers = {'Content-Type': 'application/json'}
     webhook = dingtalk.get_webhook(1,env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
+    if debug:
+        print(data)
     msg = {
         "name": data['name'],
         "hostip": data['hostip'],
