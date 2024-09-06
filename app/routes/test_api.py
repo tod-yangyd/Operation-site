@@ -14,12 +14,13 @@ def log_alert(env):
     webhook = dingtalk.get_webhook(1,env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
     if debug:
-        print(data)
+        print(data['message'])
+        print(data['message']['name'])
     msg = {
-        "name": data['name'],
-        "hostip": data['hostip'],
-        "msg": data['msg'],
-        "start_time": data['time']
+        "name": data['message']['name'],
+        "hostip": data['message']['hostip'],
+        "msg": data['message']['msg'],
+        "start_time": data['message']['time']
     }
     send_msg_tpl = {
         "msgtype": "text",
