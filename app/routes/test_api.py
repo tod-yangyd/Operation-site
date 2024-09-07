@@ -14,8 +14,8 @@ def log_alert(env):
     webhook = dingtalk.get_webhook(1,env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
     if debug:
-        print(data['message'])
-        print(data['message']['name'])
+        print(data)
+
     msg = {
         "name": data['message']['name'],
         "hostip": data['message']['hostip'],
