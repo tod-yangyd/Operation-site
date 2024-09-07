@@ -17,10 +17,10 @@ def log_alert(env):
         print(data)
 
     msg = {
-        "name": data['message']['name'],
-        "hostip": data['message']['hostip'],
-        "msg": data['message']['msg'],
-        "start_time": data['message']['time']
+        "name": '测试',
+        "hostip": data['host']['ip'],
+        "msg": data['msg'],
+        "start_time": data['timestamp']
     }
     send_msg_tpl = {
         "msgtype": "text",
