@@ -17,8 +17,8 @@ def log_alert(env):
         print(data)
 
     msg = {
-        "name": '测试',
-        "hostip": data['host']['ip'],
+        "name": data['name'],
+        "hostip": data['hostip'],
         "msg": data['msg'],
         "start_time": data['timestamp']
     }
