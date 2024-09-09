@@ -20,12 +20,13 @@ def log_alert(env):
         "name": data['name'],
         "hostip": data['hostip'],
         "msg": data['msg'],
+        "appname": data['appname'],
         "start_time": data['timestamp']
     }
     send_msg_tpl = {
         "msgtype": "text",
         "text": {
-            "content": "告警名称：{name} \n告警地址：{hostip} \n开始时间：{start_time} \n告警内容：{msg} ".format(**msg)
+            "content": "告警名称：{name} \n应用名称：{appname} \n告警地址：{hostip} \n开始时间：{start_time} \n告警内容：{msg} ".format(**msg)
         },
         "at": {
             "atUserIds": [
