@@ -32,7 +32,7 @@ def get_signed_url(URL,secret):
 
 
 def get_webhook(mode, env='test'):
-    if env == 'Production':
+    if env.lower() == 'production':
         if mode == 0:  # only 敏感字
             webhook = pro_URL
         elif mode == 1 or mode == 2:  # 敏感字和加签 或 # 敏感字+加签+ip
