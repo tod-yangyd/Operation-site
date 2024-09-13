@@ -32,8 +32,8 @@ def alert_env(env):
         send_msg_tpl = {
             "msgtype": "text",
             "text": {
-                "content": "**服务名称**：{scope} \n**影响范围**：{name} \n**触发规则**：{rule_name} \n**开始时间**：{start_time} \n**告警内容**：{alarm_message} "
-                           "\n**告警标签**：{tags}".format(**msg)
+                "content": "服务名称：{scope} \n影响范围：{name} \n触发规则：{rule_name} \n开始时间：{start_time} \n告警内容：{alarm_message} "
+                           "\n告警标签：{tags}".format(**msg)
             },
             "at": {
                 "atUserIds": [
@@ -50,7 +50,7 @@ def alert_env(env):
 @base.route('/api/log_alert/<string:env>', methods=['POST'])
 def log_alert(env):
     headers = {'Content-Type': 'application/json'}
-    webhook = dingtalk.get_webhook(1,env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
+    webhook = dingtalk.get_webhook(1, env)  # 主要模式有 0 ： 敏感字 1：# 敏感字 +加签 3：敏感字+加签+IP
     data = request.get_json()
 
     msg = {
@@ -63,7 +63,7 @@ def log_alert(env):
     send_msg_tpl = {
         "msgtype": "text",
         "text": {
-            "content": "**告警名称**：{name} \n**应用名称**：{appname} \n**告警地址**：{hostip} \n**开始时间**：{start_time} \n**告警内容**：{msg} ".format(**msg)
+            "content": "告警名称：{name} \n应用名称：{appname} \n告警地址：{hostip} \n开始时间：{start_time} \n告警内容：{msg} ".format(**msg)
         },
         "at": {
             "atUserIds": [
@@ -94,7 +94,7 @@ def comm():
         reply = dingtalk.check_post_message(post_message)
     else:
         reply ="请求超时"
-        print ("请求超时")
+        print (reply)
     message_json, header = dingtalk.build_reply(post_userid, reply)
     # 发送请求
     info = requests.post(url=post_webhook, data=message_json, headers=header)

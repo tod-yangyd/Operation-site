@@ -26,7 +26,7 @@ def test_log_alert(env):
     send_msg_tpl = {
         "msgtype": "text",
         "text": {
-            "content": "**告警名称**：{name} \n**应用名称**：{appname} \n**告警地址**：{hostip} \n**开始时间**：{start_time} \n**告警内容**：{msg} ".format(**msg)
+            "content": "告警名称：{name} \n应用名称：{appname} \n告警地址：{hostip} \n开始时间：{start_time} \n告警内容：{msg} ".format(**msg)
         },
         "at": {
             "atUserIds": [
