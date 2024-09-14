@@ -31,7 +31,7 @@ def get_signed_url(URL,secret):
     return webhook
 
 
-def get_webhook(mode, env='test'):
+def get_webhook(mode, env):
     if env.lower() == 'production':
         if mode == 0:  # only 敏感字
             webhook = pro_URL
