@@ -9,7 +9,7 @@ class dingtalkConfig:
 
 class dingtalkConfig_test:
     test_URL = 'https://oapi.dingtalk.com/robot/send?access_token=f83292eac2deeb253ad352c1b742eee27555830e2c7e7d59b8ae611e26e4efc8'
-    test_SECRET = "SECe126a396317ee666eb82df81fef96a685dc69c860e3b9b36b6c1c981e94a4e0a"  # SEC开头的
+    test_SECRET = "SECf77a363c68dddfd70ebb9fad87af04306358bae4fcee81ce5496dbe85a814dec"  # SEC开头的
 
 
 class Config(dingtalkConfig):
