@@ -7,7 +7,7 @@ ADD docker-entrypoint.sh /tmp/docker-entrypoint.sh
 
 
 RUN cd /opt && git clone https://gitee.com/tod-yangyd/Operation-site.git && cd Operation-site && \
-    sudo pip install -r requirements.txt && \
+    pip install -r requirements.txt && \
     mv /tmp/docker-entrypoint.sh /opt/docker-entrypoint.sh && chmod +x /opt/docker-entrypoint.sh
 
 
