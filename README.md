@@ -37,8 +37,12 @@ env| 是 | null | production(不区分大小写)推送到dingtalkConfig，否则
 ### 本地启动
 服务器启动建议用守护进程比如supervisord
 
+20240921：发现uwsgi启动的服务在某些OS下会启动后高内存占用的情况（CentOS7 5.4.227）。
+因此使用waitress替代，但是waitress配置简陋还不支持打印日志，可以的话，尽量还是用uwsgi
+
 ```
-uwsgi --ini start.ini 
+# uwsgi --ini start.ini 
+waitress-serve --port=8000  --call app:create_app 
 
 ```
 
