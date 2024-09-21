@@ -1,4 +1,6 @@
-FROM 172.17.200.84:80/yyd/py-uwsgi:3.9.19-slim
+#FROM 172.17.200.84:80/yyd/py-uwsgi:3.9.19-slim
+FROM 172.17.200.84:80/yyd/py-gunicorn:3.9.19-slim
+
 
 # 如需完整镜像文件，选择Dockerfile_FULL
 

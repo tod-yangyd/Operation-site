@@ -21,7 +21,6 @@ spec:
       labels:
         {{- include "member-helm.selectorLabels" . | nindent 8 }}
     spec:
-      nodeName: node03
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
